@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [{name = "Sindhura Kumbakonam Subramanian", email = "sindhura.kumbako@ufl.edu"}]
+name = "project2"
+description = "Project Two from sindhuraks -- Spring 2025"
+version = "1.0"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy==1.26.4",
+    "pip>=25.0.1",
+    "pymupdf>=1.25.4",
+    "pytest>=8.3.5",
+    "setuptools>=77.0.1",
+    "spacy-experimental>=0.6.4",
+    "thinc[torch]>=8.2.4",
+    "tqdm>=4.67.1",
+    "wheel>=0.45.1",
+]
+
+[project.urls]
+Task = "https://ufdatastudio.com/cis6930sp25/project/2"
+repository = "https://github.com/<userid>/cis6930sp25-project2"
+
+[tool.setuptools]
+py-modules = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
