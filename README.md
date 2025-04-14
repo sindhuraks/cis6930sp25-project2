@@ -10,9 +10,7 @@ The aim of this project is to build a python function that redacts sensitive inf
 
 This project requires 3.10 as the version of Python to be used (3.10.16 was used for this project).
 
-1. Create a python project using : `uv init .` or clone the repository from GitHub, create a virtual environment using `uv venv` and activate the environment using `source .venv/bin/activate`. Install `en_coreference_web_trf` pre-trained model using `uv pip install https://github.com/explosion/spacy-experimental/releases/download/v0.6.1/en_coreference_web_trf-3.4.0a2-py3-none-any.whl` if not installed already. Download the models if not installed:
-    - `uv run -m spacy download en_core_web_sm`
-    - `uv run -m spacy download en_core_web_trf`
+1. Create a python project using : `uv init .` or clone the repository from GitHub, create a virtual environment using `uv venv` and activate the environment using `source .venv/bin/activate`.
 
 2. Install the following packages using `uv add` to add the packages to the pyptoject.toml file:
     - uv add --no-cache pip setuptools wheel pymupdf spacy-experimental tqdm
