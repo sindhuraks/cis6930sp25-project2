@@ -49,7 +49,7 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 
 7. redact_coreferences_in_pdf(text, page, name) - this function loads the pretrained model for coreference : en_coreference_web_trf, splits the text into chunks of size 512, splits the named entity if len of the entity is greater than 1, gets the first and last name, checks if these names are present in the coref clusters and if present gets the remaining entity values from the list as coreferences, annotates and redacts the text in red color.
 
-8. write_metadata(fname, name, type, page) -  this function takes the filename, name and type of the entity and the page number, writes these details to a tsv file.
+8. write_metadata(fname, name, type, page) -  this function takes the filename, name and type of the entity and the page number, appends these details to a tsv file named `new_file.tsv`.
 
 9. chunk_text(text, chunk_size = 512) - this function takes the text in the pdf document and returns a chunked text of size 512 in order to avoid `Token indices sequence length is longer than the specified maximum sequence length for this model (580 > 512). Running this sequence through the model will result in indexing errors` returned by en_coreference_web_trf model.
 
@@ -63,6 +63,10 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 
 2. When attempting to do named entity redaction using entities flag, "PERSON" is used. Named entity redaction using entities flag entirely depends upon the values returned by the model and redactions are done based on these values.
 
+3. While generating metadata using the stats flag, only the name of directory should be given. By default, the details will be written to a file named `new_file.tsv` in append mode.
+
+4. While specifying the output directory using the stats flag, only the name of directory should be given without the `/`.
+
 ### Bugs
 
-1. The pdfs used for testing has scanned pages of different fonts. The model does not recognize some of these fonts and if there are any names or entities that needs to be redacted present in these font styles, redaction will not be done. The same goes for coreference redaction as well. Even if the model redacts the entities for a font, it does not redact the coreference for that font style.
+1. The pdfs used for testing has scanned pages of different font styles. The model does not recognize some of these fonts and if there are any names or entities that needs to be redacted present in these font styles, redaction will not be done. The same goes for coreference redaction as well. Even if the model redacts the entities for a font, it does not redact the coreference for that font style.
