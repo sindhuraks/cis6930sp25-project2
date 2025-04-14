@@ -138,7 +138,7 @@ def redact_entities_in_pdf(doc, entities,output_dir,file, stats,coreferences):
                             type = 'Entity'
                             name = ent.text
                             if name is not None:
-                                write_metadata(file,name,type, page_nos)
+                                write_metadata(file,name,type, page_nos, stats)
         
             page.apply_redactions()
     
@@ -241,8 +241,6 @@ def main():
     if not(args.entities): # if no entity is given, then the default is PERSON
         args.entities = 'PERSON'
     
-    if not(args.coref):
-        args.coref = '1'
     files = get_input_files(args.input)
     if args.names or (args.entities or args.coref):
         if not os.path.exists(args.output):

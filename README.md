@@ -23,8 +23,8 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 
 ## How to run
 
-1. uv run python main.py --input "resources/test3in.pdf" --output myoutput --names "Kent Jeffrey" --stats stats
-2. uv run python main.py --input "resources/test1*" --output myoutput --entities "PERSON" --stats stats
+1. uv run python main.py --input "resources/test3in.pdf" --output myoutput --names "Kent Jeffrey" --coref "1" --stats stats
+2. uv run python main.py --input "resources/test1*" --output myoutput --entities "PERSON" --coref "1" --stats stats
 3. uv run python main.py
 
 ## Example
@@ -53,7 +53,7 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 
 9. chunk_text(text, chunk_size = 512) - this function takes the text in the pdf document and returns a chunked text of size 512 in order to avoid `Token indices sequence length is longer than the specified maximum sequence length for this model (580 > 512). Running this sequence through the model will result in indexing errors` returned by en_coreference_web_trf model.
 
-10. main() - this function is the main entry point which parses the command line arguments; processes the pdf files and saves the redacted pdf file to the mentioned path. The processing happens if and only if the input file globs and output directory is given; either names or entitities and the stats file path is mandatory. Otherwise, throws an error to the console stating how the file should be run. If no entity is given via the entities argument, it is defaulted to PERSON. If coref flag is left blank, defaulted to '1'.
+10. main() - this function is the main entry point which parses the command line arguments; processes the pdf files and saves the redacted pdf file to the mentioned path. The processing happens if and only if the input file globs and output directory is given; either names or entitities and the stats file path is mandatory. Otherwise, throws an error to the console stating how the file should be run. If no entity is given via the entities argument, it is defaulted to PERSON.
 
 ## Bugs and Assumptions
 
@@ -66,6 +66,8 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 3. While generating metadata using the stats flag, only the name of directory should be given. By default, the details will be written to a file named `new_file.tsv` in append mode.
 
 4. While specifying the output directory using the stats flag, only the name of directory should be given without the `/`.
+
+5. To perform coreference redaction, the flag "1" should be passed to indicate coreference redaction is necessary.
 
 ### Bugs
 
