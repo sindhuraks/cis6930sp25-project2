@@ -7,7 +7,7 @@ import warnings
 def test_name_redaction_in_pdf():
 
     warnings.filterwarnings("ignore")
-    spacy.load('en_core_web_sm')
+    spacy.load('en_core_web_trf')
     doc = pymupdf.open('resources/test3in.pdf')
     names = ['Kent Jeffrey']
     output_dir = 'output'
