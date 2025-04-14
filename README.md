@@ -28,9 +28,8 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 3. uv run python main.py
 
 ## Example
+![alt text](example.gif)
 
-<video controls src="demo.mov" title="Demo"></video>
-<video controls src="example.mov" title="Title"></video>
 
 ## Features and functions
 
