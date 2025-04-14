@@ -25,7 +25,8 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 
 1. uv run python main.py --input "resources/test3in.pdf" --output myoutput --names "Kent Jeffrey" --coref "1" --stats stats
 2. uv run python main.py --input "resources/test1*" --output myoutput --entities "PERSON" --coref "1" --stats stats
-3. uv run python main.py
+3. uv run python main.py --input "resources/test3in.pdf" --output myoutput --names "Kent Jeffrey" --stats stats
+4. uv run python main.py
 
 ## Example
 ![alt text](example.gif)
