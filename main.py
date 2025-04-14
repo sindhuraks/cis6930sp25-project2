@@ -1,5 +1,6 @@
 import argparse
 import glob
+import os
 import pymupdf
 import spacy
 import sys
@@ -99,7 +100,7 @@ def redact_name_in_pdf(doc,names,output_dir,file, stats, coreferences):
                 instances_found += 1
             if stats:
                 type = 'Name'
-                write_metadata(file,name, type, page_nos)
+                write_metadata(file,name, type, page_nos, stats)
 
         page.apply_redactions()
 
@@ -206,12 +207,16 @@ def redact_coreferences_in_pdf(text, page, name, is_entity):
                                     r = pymupdf.Rect(word[:4])
                                     page.add_redact_annot(r, fill=(1,0,0))
 
-def write_metadata(fname, name, type, page):
+def write_metadata(fname, name, type, page, stats):
 
     '''
     Writes the filename, page number where the redacted text is found, name, length and type of the token
     and returns the file with theese data
     '''
+
+    # create a directory if it does not exist
+    if not os.path.exists(stats):
+        os.makedirs(stats)
 
     metadata = [{'Column Name':'File', 'Description':'The name of the file','Example':fname},
                 {'Column Name':'Location', 'Description':'The location of the token redacted file','Example':str(page)},
@@ -221,7 +226,7 @@ def write_metadata(fname, name, type, page):
 
     ]
 
-    with open('stats/new_file.tsv', 'a', newline='') as tsvfile:
+    with open(stats+'/'+'new_file.tsv', 'a', newline='') as tsvfile:
         for pno in page:
             for row in metadata:
                 if row['Column Name'] == 'Location':
