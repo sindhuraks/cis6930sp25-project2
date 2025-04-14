@@ -70,3 +70,5 @@ This project requires 3.10 as the version of Python to be used (3.10.16 was used
 ### Bugs
 
 1. The pdfs used for testing has scanned pages of different font styles. The model does not recognize some of these fonts and if there are any names or entities that needs to be redacted present in these font styles, redaction will not be done. The same goes for coreference redaction as well. Even if the model redacts the entities for a font, it does not redact the coreference for that font style.
+
+2. https://github.com/pymupdf/PyMuPDF/issues/3931 : Existing issue for warnings that arise when pytests are run (`sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute`).
