@@ -245,6 +245,8 @@ def main():
         args.coref = '1'
     files = get_input_files(args.input)
     if args.names or (args.entities or args.coref):
+        if not os.path.exists(args.output):
+            os.makedirs(args.output)
         process_input_files(files,args.names,args.entities, args.coref,args.output, args.stats)
 
 
